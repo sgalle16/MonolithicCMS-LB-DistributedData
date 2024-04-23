@@ -1,0 +1,26 @@
+version: "3.1"
+
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    container_name: wordpress_mysql_db
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_USER: wordpress_user
+      MYSQL_PASSWORD: wordpresspassword
+      MYSQL_ROOT_PASSWORD: wordpressrootpassword
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - reto3_network
+
+volumes:
+  db:
+  
+networks:
+  reto3_network:
+    driver: bridge
